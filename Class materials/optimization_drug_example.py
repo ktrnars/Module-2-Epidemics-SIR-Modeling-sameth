@@ -39,6 +39,8 @@ plt.xlabel('Dosage (mg)')
 plt.ylabel('Net Effect')
 plt.legend()
 
+plt.show() # show the plot
+
 # %% Find optimal dosages for each drug
 
 # First method: Steepest Ascent using the update rule
@@ -48,7 +50,7 @@ def gradient(f, x, h=1e-4):
     """Central difference approximation for f'(x)."""
     return (f(x + h) - f(x - h)) / (2*h)
 
-def steepest_ascent(f, x0, h_step=0.1, tol=1e-6, max_iter=1000):
+def steepest_ascent(f, x0, h_step=0.1, tol=1e-6, max_iter=100):
     x = x0 # update initial guess
     for i in range(max_iter):
         grad = gradient(f, x)
@@ -83,7 +85,7 @@ def second_derivative(f, x, h=1e-4):
     """Central difference approximation for f''(x)."""
     return (f(x + h) - 2*f(x) + f(x - h)) / (h**2)
 
-def newtons_method(f, x0, tol=1e-6, max_iter=1000):
+def newtons_method(f, x0, tol=1e-6, max_iter=100):
     x = x0
     for i in range(max_iter):
         grad = gradient(f, x)
@@ -116,3 +118,5 @@ print(f"Newton's Method - Optimal Lisinopril Effect: {opt_effect_lisinopril_nm*1
 opt_dose_escitalopram_nm, opt_effect_escitalopram_nm = newtons_method(escitalopram, x0=1.0)
 print(f"Newton's Method - Optimal Escitalopram Dose: {opt_dose_escitalopram_nm:.2f} mg")
 print(f"Newton's Method - Optimal Escitalopram Effect: {opt_effect_escitalopram_nm*100:.2f}%")
+
+# %%
