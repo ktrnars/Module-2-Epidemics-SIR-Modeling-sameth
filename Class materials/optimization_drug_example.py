@@ -1,3 +1,4 @@
+'''
 # drug efficacy optimization example for BME 2315
 # made by Lavie, fall 2025
 
@@ -116,3 +117,12 @@ print(f"Newton's Method - Optimal Lisinopril Effect: {opt_effect_lisinopril_nm*1
 opt_dose_escitalopram_nm, opt_effect_escitalopram_nm = newtons_method(escitalopram, x0=1.0)
 print(f"Newton's Method - Optimal Escitalopram Dose: {opt_dose_escitalopram_nm:.2f} mg")
 print(f"Newton's Method - Optimal Escitalopram Effect: {opt_effect_escitalopram_nm*100:.2f}%")
+
+# %% Plor combined function
+def combined(x):
+    return metformin(x) + lisinopril(x) + escitalopram(x)
+
+plt.plot(x, combined(x), linestyle='--', color='black', label='Combined')
+plt.legend()
+'''
+
